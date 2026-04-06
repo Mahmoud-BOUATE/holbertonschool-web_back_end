@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-import math
 """Module that that takes a float as arguments and return thr floor"""
+import math
 
 
 def floor(a: float) -> int:
