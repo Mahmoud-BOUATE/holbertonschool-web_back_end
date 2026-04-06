@@ -1,5 +1,6 @@
-#!/usr/bin/env python
-"""Module that that takes a float as arguments and return thr floor"""
+#!/usr/bin/env python3
+"""Module that takes a float as argument and returns its floor."""
+
 import math
 
 
