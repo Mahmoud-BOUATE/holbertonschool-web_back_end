@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
-"""Asynchronous generator yielding random floats."""
+"""Asynchronous comprehension collecting 10 random numbers."""
 
-from typing import AsyncGenerator, List
-
+from typing import List
 
 async_generator = __import__('0-async_generator').async_generator
 
 
 async def async_comprehension() -> List[float]:
-    """Function that return 10 random value from asynck generator"""
+    """Return a list of 10 random numbers from async_generator"""
     result: List[float] = []
+    count = 0
+
     async for i in async_generator():
         result.append(i)
+        count += 1
+        if count == 10:
+            break
 
     return result
