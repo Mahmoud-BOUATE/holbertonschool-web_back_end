@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+"""Module Simple helper function """
+
+
+def index_range(page, page_size):
+    """Simple helper function"""
+    start = (page - 1) * page_size
+    end = start + page_size
+
+    return start, end
