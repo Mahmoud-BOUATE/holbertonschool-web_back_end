@@ -31,9 +31,10 @@ class Server:
         """
         if self.__indexed_dataset is None:
             dataset = self.dataset()
+            truncated_dataset = dataset[:1000]
 
             self.__indexed_dataset = {
-                i: dataset[i] for i in range(len(dataset))
+                i: truncated_dataset[i] for i in range(len(truncated_dataset))
             }
         return self.__indexed_dataset
 
@@ -46,13 +47,13 @@ class Server:
         dataset = self.indexed_dataset()
         if index is None:
             index = 0
+        max_index = max(dataset.keys()) if dataset else -1
 
-        assert isinstance(index, int) and 0 <= index < len(dataset)
+        assert isinstance(index, int) and 0 <= index <= max_index
         assert isinstance(page_size, int) and page_size > 0
 
         data: List[List] = []
         next_index = index
-        max_index = max(dataset.keys()) if dataset else 0
 
         while len(data) < page_size and next_index <= max_index:
             if next_index in dataset:
