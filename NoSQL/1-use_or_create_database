@@ -1,2 +1,2 @@
 // Create a database
-use ma_base my_db
+use my_db
