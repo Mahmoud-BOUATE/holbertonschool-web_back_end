@@ -1,37 +1,35 @@
 #!/usr/bin/env python3
 """
-Nginx logs stats
+Log stats script using MongoDB
 """
 
 from pymongo import MongoClient
 
 
-def count_docs(collection, filt):
-    """Count documents with compatibility for older PyMongo versions."""
-    try:
-        return collection.count_documents(filt)
-    except AttributeError:
-        return collection.count(filt)
-
-
-def print_nginx_stats():
-    """Print required stats about Nginx logs."""
-    client = MongoClient("mongodb://127.0.0.1:27017")
+def log_stats():
+    """Displays stats about Nginx logs"""
+    client = MongoClient()
     collection = client.logs.nginx
 
-    total_logs = count_docs(collection, {})
+    # Total number of logs
+    total_logs = collection.count_documents({})
     print(f"{total_logs} logs")
 
+    # Methods count
     print("Methods:")
-
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
+
     for method in methods:
-        count = count_docs(collection, {"method": method})
+        count = collection.count_documents({"method": method})
         print(f"\tmethod {method}: {count}")
 
-    status_check = count_docs(collection, {"method": "GET", "path": "/status"})
-    print(f"\tmethod GET: {status_check} path /status")
+    # GET /status count
+    status_check = collection.count_documents({
+        "method": "GET",
+        "path": "/status"
+    })
+    print(f"{status_check} status check")
 
 
 if __name__ == "__main__":
-    print_nginx_stats()
+    log_stats()
