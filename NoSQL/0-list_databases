@@ -1,1 +1,5 @@
-show dbs
+#!/usr/bin/env mongo
+
+db.adminCommand('listDatabases').databases.forEach(function(d) {
+	print(d.name + "\t" + (d.sizeOnDisk / (1024 * 1024 * 1024)).toFixed(3) + "GB");
+});
