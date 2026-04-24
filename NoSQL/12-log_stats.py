@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Nginx logs statistics from MongoDB
+Nginx logs stats
 """
 
 from pymongo import MongoClient
@@ -23,7 +23,7 @@ def print_nginx_stats():
     status_check = collection.count_documents(
         {"method": "GET", "path": "/status"}
     )
-    print(f"{status_check} status check")
+    print(f"\tmethod GET: {status_check} path /status")
 
 
 if __name__ == "__main__":
