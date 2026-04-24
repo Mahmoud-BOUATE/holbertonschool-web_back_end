@@ -9,7 +9,7 @@ def schools_by_topic(mongo_collection, topic):
 
     Args:
         mongo_collection: pymongo collection object
-        topic (str): topic to search for
+        topic (str): topic searched
 
     Returns:
         list of matching school documents
