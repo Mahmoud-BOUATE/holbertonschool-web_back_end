@@ -1,11 +1,25 @@
-class Building{
-    constructor(sqft){
+class Building {
+    constructor(sqft) {
         this.sqft = sqft;
     }
-    get sqft(){
-        return this._sqtf;
+
+    // GETTER
+    get sqft() {
+        return this._sqft;
     }
-    evacuationWarningMessage(){
+
+    // SETTER
+    set sqft(value) {
+        if (typeof value !== "number") {
+            throw new TypeError("sqft must be a number");
+        }
+        this._sqft = value;
+    }
+
+    // ABSTRACT METHOD SIMULÉE
+    evacuationWarningMessage() {
         throw new Error("Class extending Building must override evacuationWarningMessage");
     }
 }
+
+export default Building;
