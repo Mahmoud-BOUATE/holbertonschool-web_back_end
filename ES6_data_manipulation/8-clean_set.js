@@ -1,21 +1,21 @@
 export default function cleanSet(set, startString) {
-  if (startString === "") return "";
+    if (!startString || startString === "") return "";
 
-  let result = "";
+    let result = "";
 
-  for (const a of set) {
-    if (a.startsWith(startString)) {
-      const slice = a.slice(startString.length);
+    for (const a of set) {
+        if (a.startsWith(startString)) {
+            const slice = a.slice(startString.length);
 
-      if (slice !== "") {
-        if (result === "") {
-          result = slice;
-        } else {
-          result += "-" + slice;
+            if (slice !== "") {
+                if (result === "") {
+                    result = slice;
+                } else {
+                    result += "-" + slice;
+                }
+            }
         }
-      }
     }
-  }
 
-  return result;
+    return result;
 }
