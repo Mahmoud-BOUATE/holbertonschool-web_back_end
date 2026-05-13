@@ -1,4 +1,4 @@
-onst http = require('http');
+const http = require('http');
 const fs = require('fs');
 
 function countStudents(path) {
@@ -57,4 +57,4 @@ const app = http.createServer((req, res) => {
 
 app.listen(1245);
 
-module.exports = app;+
+module.exports = app;
