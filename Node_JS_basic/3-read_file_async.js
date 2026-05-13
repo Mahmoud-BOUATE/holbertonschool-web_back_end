@@ -23,11 +23,11 @@ function countStudents(path) {
       }
 
       const output = [];
-      output.push(Number of students: ${students.length});
-      console.log(Number of students: ${students.length});
+      output.push(`Number of students: ${students.length}`);
+      console.log(`Number of students: ${students.length}`);
 
       for (const [field, names] of Object.entries(fields)) {
-        const line = Number of students in ${field}: ${names.length}. List: ${names.join(', ')};
+        const line = `Number of students in ${field}: ${names.length}. List: ${names.join(', ')}`;
         output.push(line);
         console.log(line);
       }
